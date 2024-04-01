@@ -1,0 +1,50 @@
+#: import utils kivy.utils
+
+ScreenManager:
+    HomeScreen:
+        id:home
+        name:"home"
+
+<HomeScreen>:
+    FloatLayout:
+        canvas.before:
+            Color:
+                rgb: utils.get_color_from_hex("#66FF99")
+            Rectangle:
+                pos:self.pos
+                size:self.size
+
+        Image:
+            source:"male.gif"
+            size_hint: 0.5,.1
+            pos_hint: {"top":1, "left":1}
+
+        Image:
+            source:"female.gif"
+            size_hint: 0.5,.1
+            pos_hint: {"top":1, "right":1}
+
+        Label:
+            pos_hint: {"top":0.85}
+            size_hint: 1.0,0.1
+            text:'Choose Your height'
+            font_size: 30
+            color:1,0,1,1
+        MDSlider:
+            id: height_value
+            # text:'text'
+            min:90
+            max:220
+            value:150
+            orientation: "horizontal"
+            size_hint: 1.,.1
+            pos_hint: {"top":0.75}
+            on_touch_up:
+                root.getvalue()
+            MDSliderHandle:
+
+            MDSliderValueLabel:
+
+        Label:
+            text:str(height_value.value)
+            
